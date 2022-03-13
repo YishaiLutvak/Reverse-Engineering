@@ -23,28 +23,30 @@ section '.text' code readable executable
 start:
 	mov     esi, endl
 	call 	read_hex
-	call    print_str
+	call    print_str; print endl
+	cmp		eax, 0; To avoid an endless loop
+	jng		finish
 	mov 	ecx, eax
-	mov		eax, 1
+	mov		eax, 1; eax is outer counter
 again1:
-	mov 	ebx, 0
+	mov 	ebx, 0; ebx is inner counter
 again2:
 	inc 	ebx
 	mov		edx, eax
 	mov		eax, ebx
-	call    print_eax
+	call    print_eax; print inner counter
 	mov     eax, edx
 	cmp 	ebx, eax
 	jl		again2
 	 
-    call    print_str
+    call    print_str; print endl
 	inc		eax
 	loop 	again1
 
 	
 ; ====================================
-
+finish:
 	push	0
 	call	[ExitProcess]
 
-include 'training.inc'
+include '..\training.inc'

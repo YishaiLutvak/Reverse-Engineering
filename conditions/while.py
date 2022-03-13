@@ -9,4 +9,9 @@ while n != 1:
     else:
         n = 3 * n + 1
     i += 1
+
+    print(f'n={n}')
+    print(f'i={i}')
+    print()
+
 print(i)

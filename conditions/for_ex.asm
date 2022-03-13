@@ -41,4 +41,4 @@ my_loop:
 	push	0
 	call	[ExitProcess]
 
-include 'training.inc'
+include '..\training.inc'

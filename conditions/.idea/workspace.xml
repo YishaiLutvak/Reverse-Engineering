@@ -1,7 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c78759b2-aa40-4a0f-9482-2ad7589a21f8" name="Default Changelist" comment="" />
+    <list default="true" id="c78759b2-aa40-4a0f-9482-2ad7589a21f8" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/for.py" beforeDir="false" afterPath="$PROJECT_DIR$/for.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/for_ex.asm" beforeDir="false" afterPath="$PROJECT_DIR$/for_ex.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ifElse_ex.asm" beforeDir="false" afterPath="$PROJECT_DIR$/ifElse_ex.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nested-loop.py" beforeDir="false" afterPath="$PROJECT_DIR$/nested-loop.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/nestedLoop_ex.asm" beforeDir="false" afterPath="$PROJECT_DIR$/nestedLoop_ex.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/while.py" beforeDir="false" afterPath="$PROJECT_DIR$/while.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/while_ex.asm" beforeDir="false" afterPath="$PROJECT_DIR$/while_ex.asm" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,7 +43,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.for">
+  <component name="RunManager" selected="Python.nested-loop">
     <configuration name="for" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <module name="conditions" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -77,13 +86,82 @@
       <option name="INPUT_FILE" value="" />
       <method v="2" />
     </configuration>
+    <configuration name="if-else" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="conditions" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/if-else.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="nested-loop" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="conditions" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/nested-loop.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="while" type="PythonConfigurationType" factoryName="Python" temporary="true">
+      <module name="conditions" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/while.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Python.helloWorld" />
       <item itemvalue="Python.for" />
+      <item itemvalue="Python.if-else" />
+      <item itemvalue="Python.while" />
+      <item itemvalue="Python.nested-loop" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Python.nested-loop" />
         <item itemvalue="Python.for" />
+        <item itemvalue="Python.while" />
+        <item itemvalue="Python.if-else" />
       </list>
     </recent_temporary>
   </component>
