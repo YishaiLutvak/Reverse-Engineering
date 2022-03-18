@@ -2,14 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c78759b2-aa40-4a0f-9482-2ad7589a21f8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/for.py" beforeDir="false" afterPath="$PROJECT_DIR$/for.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/for_ex.asm" beforeDir="false" afterPath="$PROJECT_DIR$/for_ex.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ifElse_ex.asm" beforeDir="false" afterPath="$PROJECT_DIR$/ifElse_ex.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nested-loop.py" beforeDir="false" afterPath="$PROJECT_DIR$/nested-loop.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/nestedLoop_ex.asm" beforeDir="false" afterPath="$PROJECT_DIR$/nestedLoop_ex.asm" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/while.py" beforeDir="false" afterPath="$PROJECT_DIR$/while.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/while_ex.asm" beforeDir="false" afterPath="$PROJECT_DIR$/while_ex.asm" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/for_ex.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/for_ex.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ifElse_ex.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ifElse_ex.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nestedLoop_ex.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/nestedLoop_ex.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/switch.c" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/switchCase_ex.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/while.py" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/while_ex.asm" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/while_ex.exe" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ollydbg/VCRUNTIME140D.udd" beforeDir="false" afterPath="$PROJECT_DIR$/../ollydbg/VCRUNTIME140D.udd" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ollydbg/unsignedVCsigned.udd" beforeDir="false" afterPath="$PROJECT_DIR$/../ollydbg/unsignedVCsigned.udd" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
