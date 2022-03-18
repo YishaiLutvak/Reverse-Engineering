@@ -1,21 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c78759b2-aa40-4a0f-9482-2ad7589a21f8" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/for_ex.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/for_ex.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ifElse_ex.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ifElse_ex.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nestedLoop_ex.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/nestedLoop_ex.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/switch.c" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/switchCase_ex.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/while.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/while_ex.asm" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/while_ex.exe" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ollydbg/VCRUNTIME140D.udd" beforeDir="false" afterPath="$PROJECT_DIR$/../ollydbg/VCRUNTIME140D.udd" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../ollydbg/unsignedVCsigned.udd" beforeDir="false" afterPath="$PROJECT_DIR$/../ollydbg/unsignedVCsigned.udd" afterDir="false" />
-    </list>
+    <list default="true" id="c78759b2-aa40-4a0f-9482-2ad7589a21f8" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -181,6 +167,14 @@
       <option name="presentableId" value="Default" />
       <updated>1647176420117</updated>
     </task>
+    <task id="LOCAL-00001" summary="add while fib">
+      <created>1647602982616</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1647602982616</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -195,5 +189,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add while fib" />
+    <option name="LAST_COMMIT_MESSAGE" value="add while fib" />
   </component>
 </project>
