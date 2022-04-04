@@ -1,0 +1,136 @@
+-- © 2009 Daniel Pistelli. All rights reserved.
+-- this script generates a report of a PE's .NET metadata tables.
+
+filename = GetOpenFile("Open...",  "All\n*.*\nexe\n*.exe\ndll\n*.dll\n")
+
+if filename == null then
+	return
+end
+
+hPE = OpenFile(filename)
+
+if hPE == null then
+	return
+end
+
+if GetOffset(hPE, PE_DotNETDirectory) == null then
+	MsgBox("The current is not a valid .NET assembly.", "Error", MB_ICONEXCLAMATION)
+end
+
+repname = GetSaveFile("Save Report As..",  "Text File\n*.txt\n")
+
+if repname == null then
+	return
+end
+
+hReport = CreateLog(repname)
+
+if hReport == null then
+	return
+end
+
+fieldsToLog = { 
+	PE_MetaDataTable_Module, 
+	PE_MetaDataTable_TypeRef, 
+	PE_MetaDataTable_TypeDef,
+	PE_MetaDataTable_Field,
+	PE_MetaDataTable_Method,
+	PE_MetaDataTable_Param,
+	PE_MetaDataTable_InterfaceImpl,
+	PE_MetaDataTable_MemberRef,
+	PE_MetaDataTable_Constant,
+	PE_MetaDataTable_CustomAttribute,
+	PE_MetaDataTable_FieldMarshal,
+	PE_MetaDataTable_DeclSecurity,
+	PE_MetaDataTable_ClassLayout,
+	PE_MetaDataTable_FieldLayout,
+	PE_MetaDataTable_StandAloneSig,
+	PE_MetaDataTable_EventMap,
+	PE_MetaDataTable_Event,
+	PE_MetaDataTable_PropertyMap,
+	PE_MetaDataTable_Property,
+	PE_MetaDataTable_MethodSemantics,
+	PE_MetaDataTable_MethodImpl,
+	PE_MetaDataTable_ModuleRef,
+	PE_MetaDataTable_TypeSpec,
+	PE_MetaDataTable_ImplMap,
+	PE_MetaDataTable_FieldRVA,
+	PE_MetaDataTable_Assembly,
+	PE_MetaDataTable_AssemblyProcessor,
+	PE_MetaDataTable_AssemblyOS,
+	PE_MetaDataTable_AssemblyRef,
+	PE_MetaDataTable_AssemblyRefProcessor,
+	PE_MetaDataTable_AssemblyRefOS,
+	PE_MetaDataTable_File,
+	PE_MetaDataTable_ExportedType,
+	PE_MetaDataTable_ManifestResource,
+	PE_MetaDataTable_NestedClass,
+	PE_MetaDataTable_GenericParam,
+	PE_MetaDataTable_MethodSpec,
+	PE_MetaDataTable_GenericParamConstraint
+	}
+	
+fieldNames = { 
+	"Module", 
+	"TypeRef", 
+	"TypeDef",
+	"Field",
+	"Method",
+	"Param",
+	"InterfaceImpl",
+	"MemberRef",
+	"Constant",
+	"CustomAttribute",
+	"FieldMarshal",
+	"DeclSecurity",
+	"ClassLayout",
+	"FieldLayout",
+	"StandAloneSig",
+	"EventMap",
+	"Event",
+	"PropertyMap",
+	"Property",
+	"MethodSemantics",
+	"MethodImpl",
+	"ModuleRef",
+	"TypeSpec",
+	"ImplMap",
+	"FieldRVA",
+	"Assembly",
+	"AssemblyProcessor",
+	"AssemblyOS",
+	"AssemblyRef",
+	"AssemblyRefProcessor",
+	"AssemblyRefOS",
+	"File",
+	"ExportedType",
+	"ManifestResource",
+	"NestedClass",
+	"GenericParam",
+	"MethodSpec",
+	"GenericParamConstraint"
+	}
+	
+LogPrint(hReport, ".NET metadata tables report for \"" .. filename .. "\"\n\n")
+loggedTables = 0
+for i = 0, #fieldsToLog - 1 do
+	if GetOffset(hPE, fieldsToLog[i]) != null then
+		if loggedTables > 0 then
+			LogPrint(hReport, "\n\n\n")
+		end
+		LogPrint(hReport, fieldNames[i] .. " Table\n")
+		LogPrint(hReport, "---------------------------------------------\n\n")
+		LogPrintStruct(hPE, hReport, fieldsToLog[i])
+		loggedTables = loggedTables + 1
+	end
+end
+
+-- Open the report?
+
+CloseLog(hReport)
+
+nRet = MsgBox("Open report file?", ".NET Tables Report", MB_ICONQUESTION | MB_YESNO)
+
+if nRet == IDYES then
+	ExecuteAppAndWait(@"C:\Windows\System32\notepad.exe", GetShortPathName(repname))
+end
