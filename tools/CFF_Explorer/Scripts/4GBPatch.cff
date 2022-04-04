@@ -1,0 +1,64 @@
+-- © 2008 Daniel Pistelli. All rights reserved.
+-- this script patches a PE32 in order let him handle 4GB
+-- address space on x64 systems
+
+filename = GetOpenFile("Open...",  "All\n*.*\nexe\n*.exe\ndll\n*.dll\n")
+
+if filename == null then
+	return
+end
+
+pehandle = OpenFile(filename)
+
+if pehandle == null then
+	return
+end
+
+fileheader = GetOffset(pehandle, PE_FileHeader)
+
+-- check if it's a valid PE
+if fileheader == null then
+	-- CloseHandle is really not necessary,
+	-- since the file will be automatically closed
+	return
+end
+
+-- check if it's a PE64
+-- if so, there's no need to patch
+
+if IsPE64(pehandle) == true then
+	MsgBox("This is a PE64. No need to patch.", "4GB Patch", MB_ICONEXCLAMATION)
+	return
+end
+
+-- set large address space awareness flag
+
+Characteristics = ReadWord(pehandle, fileheader + 18)
+
+Characteristics = Characteristics | IMAGE_FILE_LARGE_ADDRESS_AWARE
+
+WriteWord(pehandle, fileheader + 18, Characteristics)
+
+-- save the file
+
+nRet = MsgBox("Overwrite the file?", "4GB Patch", MB_ICONQUESTION | MB_YESNO)
+
+if nRet == IDYES then
+	if SaveFile(pehandle) == true then
+		MsgBox("File successfully saved.", "4GB Patch", MB_ICONINFORMATION)
+	else
+		MsgBox("Couldn't save file", "4GB Patch", MB_ICONEXCLAMATION)
+	end
+else
+	filename = GetSaveFile("Save As...",  "All\n*.*\nexe\n*.exe\ndll\n*.dll\n")
+
+	if filename == null then
+		MsgBox("Couldn't save file", "4GB Patch", MB_ICONEXCLAMATION)
+	else
+		if SaveFileAs(pehandle, filename) == true then
+			MsgBox("File successfully saved.", "4GB Patch", MB_ICONINFORMATION)
+		else
+			MsgBox("Couldn't save file", "4GB Patch", MB_ICONEXCLAMATION)
+		end
+	end
+end

@@ -1,0 +1,180 @@
+-- © 2008 Daniel Pistelli. All rights reserved.
+-- this script generates a report 
+-- of a PE' Import Directory 
+
+-- this functions checks if a flag is set
+function IsFlag(value, flag)
+	if (value & flag) == flag then
+		return true
+	end
+	return false
+end
+
+-- prints string to the current report and goes to new line
+function AddToReport(str)
+	-- we can do this because hReport is a global variable
+	LogPrint(hReport, str .. "\n")
+end
+
+-- --------------------------------------------------
+-- the main code starts here
+-- --------------------------------------------------
+
+filename = GetOpenFile("Open...",  "All\n*.*\nexe\n*.exe\ndll\n*.dll\n")
+
+if filename == null then
+	return
+end
+
+pehandle = OpenFile(filename)
+
+if pehandle == null then
+	return
+end
+
+-- get Import Directory offset if any
+
+itoffset = GetOffset(pehandle, PE_ImportDirectory)
+
+-- check if it's a valid PE and has a IT
+if itoffset == null then
+	-- CloseHandle is really not necessary,
+	-- since the file will be automatically closed
+	return
+end
+
+-- Get report name and create the file
+
+repname = GetSaveFile("Save Report As..",  "Text File\n*.txt\n")
+
+if repname == null then
+	return
+end
+
+hReport = CreateLog(repname)
+
+if hReport == null then
+	return
+end
+
+-- sets additional definition
+
+ImportDescriptorSize = 20
+
+-- walk through the Import Directory
+
+nCurrentDescr = 0
+
+FirstThunk = ReadDword(pehandle, itoffset + 16)
+
+AddToReport("Import Directory report for \"" .. filename .. "\"")
+
+while FirstThunk != 0 do
+
+	CurImpDescrName = (nCurrentDescr * ImportDescriptorSize) + itoffset + 12
+
+	ModNameOffset = RvaToOffset(pehandle, ReadDword(pehandle, CurImpDescrName))
+
+
+	ModName =  ReadString(pehandle, ModNameOffset)
+
+	-- add the mod name to the report
+
+	AddToReport("\n" .. (nCurrentDescr + 1) .. " - " .. ModName .. "\n")
+
+	-- add all the functions to the report
+
+	AddToReport("Ordinal Name")
+	AddToReport("------- -------------------------------------")
+
+	OFTs = ReadDword(pehandle, itoffset + (nCurrentDescr * ImportDescriptorSize))
+
+	-- use OFTs or FTs
+
+	Thunks = 0
+
+	if OFTs != 0 then
+		Thunks = RvaToOffset(pehandle, OFTs)
+	else
+		Thunks = RvaToOffset(pehandle, FirstThunk)
+	end
+
+	-- list functions
+
+	bPE64 = IsPE64(pehandle)
+
+	CurThunkOffset = Thunks
+
+	CurThunk = 0
+
+	if bPE64 == true then
+		CurThunk = ReadQword(pehandle, CurThunkOffset)
+	else
+		CurThunk = ReadDword(pehandle, CurThunkOffset)
+	end
+
+
+	while CurThunk != null and CurThunk != 0 do
+
+		-- check if it's ordinal only
+
+		bOrdinal = false
+
+		if bPE64 == true then
+			bOrdinal = IsFlag(CurThunk, IMAGE_ORDINAL_FLAG64)
+		else
+			bOrdinal = IsFlag(CurThunk, IMAGE_ORDINAL_FLAG32)
+		end	
+
+		if bOrdinal == true then
+
+			local Ordinal = ReadWord(pehandle, CurThunkOffset)
+
+			AddToReport("0x" .. string.format("%04X", Ordinal))
+
+		else
+
+			FuncOffset = RvaToOffset(pehandle, (CurThunk & 0xFFFFFFFF))
+
+			local Ordinal = ReadWord(pehandle, FuncOffset)
+
+			FuncName = ReadString(pehandle, FuncOffset + 2)
+
+			AddToReport("0x" .. string.format("%04X", Ordinal) .. "  " .. FuncName)
+		end
+
+		-- next thunk
+
+		if bPE64 == true then
+			CurThunkOffset = CurThunkOffset + 8
+			CurThunk = ReadQword(pehandle, CurThunkOffset)
+		else
+			CurThunkOffset = CurThunkOffset + 4
+			CurThunk = ReadDword(pehandle, CurThunkOffset)
+		end
+			
+	end
+	
+
+	-- next import descriptor
+
+	nCurrentDescr = nCurrentDescr + 1
+
+	NextImportDescr = (itoffset + (nCurrentDescr * ImportDescriptorSize)) + 16
+
+	FirstThunk = ReadDword(pehandle, NextImportDescr)
+
+end
+
+-- Open the report?
+
+CloseLog(hReport)
+
+nRet = MsgBox("Open report file?", "IT Report", MB_ICONQUESTION | MB_YESNO)
+
+if nRet == IDYES then
+	ExecuteAppAndWait(@"C:\Windows\System32\notepad.exe", GetShortPathName(repname))
+end
+
+
+

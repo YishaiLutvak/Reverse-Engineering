@@ -1,4 +1,4 @@
-; Yishai Lutvak 304909864
+; Yishai Lutvak
 
 include 'win32a.inc'
 
@@ -46,4 +46,4 @@ again:
 	push	0
 	call	[ExitProcess]
 
-include 'training.inc'
+include '..\training.inc'
