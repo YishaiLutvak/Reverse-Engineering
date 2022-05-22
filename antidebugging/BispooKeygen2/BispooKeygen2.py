@@ -1,4 +1,3 @@
-unknown_str = "6789:;<=>?@ABCD"
 cryptYishaiLutvak = 0x8f, 0x8e, 0x8e, 0x87,\
         0x8f, 0x8c, 0x8a, 0x8f,\
         0x87, 0x8b, 0x93, 0xf2,\
@@ -8,7 +7,14 @@ password = ''
 for ch in cryptYishaiLutvak:
      password += (chr(int(ch) ^ 0xBE))
 print(password)
+
+
+
+
+
+
 #1009124195-LEET
+unknown_str = "6789:;<=>?@ABCD"
 
 #--------------------------------------------------------------
 
