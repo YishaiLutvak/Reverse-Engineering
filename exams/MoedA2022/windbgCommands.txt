@@ -1,0 +1,43 @@
+
+a= assemble [assemble address] ->after this command write set of commands you want to do and when you finish send empty command
+
+r = register [register to show] ?= [modify value]
+
+lm = list models
+
+s -sa [start place L?[end place] = show all strings ascii
+
+s -su [start place L?[end place] = show all strings unicode
+
+s -a "[string to search]" = search for string loaction
+
+ba [type] [address] = breakpoint access (r1 for read access)
+
+k = show stack
+
+kb = first 3 params that have been sended to the function
+
+gu = go until next ret
+
+da [address] = display ascii
+
+ea [address] "[value to change]" = change ascii value in the memory
+
+$exentry = address of entry point
+p = step over
+g = run to next breakpoint
+bp = breakpoint
+ba r [data address] = add hardware breakpoint that being hit when the program try to read from the given address
+
+=================================================================================
+
+bp $exentry
+eb [address] 
+eb $peb+2
+ba r1 $peb+2
+
+
+
+
+
+
